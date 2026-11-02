@@ -1,0 +1,7 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# local asset-build helper (references local source PNGs)
+convert_assets.py

@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Homebody Thrown into a Dark Captivity Novel</title>
+<meta name="description" content="I woke up as an extra — an illegitimate daughter inside a romance fantasy novel. Mistakenly kidnapped by the Northern Grand Duke in place of the heroine… but this captivity is surprisingly sweet? A book-possession romance fantasy × romantic comedy.">
+<meta property="og:title" content="A Homebody Thrown into a Dark Captivity Novel">
+<meta property="og:description" content="The peaceful(?) captivity life of an illegitimate daughter kidnapped by mistake in place of the heroine. A book-possession romance fantasy rom-com.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/images/thumb.webp">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="alternate icon" type="image/png" href="assets/images/thumb.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Gowun+Batang:wght@400;700&family=Noto+Sans:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif:wght@400;500&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@300;400;500;600&family=Shippori+Mincho+B1:wght@500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0e0a0b; --bg2:#151011; --bg3:#1b1416;
+  --panel:rgba(28,20,22,.72);
+  --bdr:#2c2024; --bdr2:#3a2a30;
+  --gold:#d8b87e; --gold-d:#b9985f; --gold-soft:#e6cfa3;
+  --rose:#e09aae; --rose-d:#c07487; --rose-soft:#f0c4d0;
+  --green:#7fa890;
+  --body:#d8c8c0; --muted:#9c8a86; --dim:#6f615f;
+  --glow:rgba(216,184,126,.18);
+  --rose-glow:rgba(224,154,174,.16);
+  --fserif:'Noto Serif KR',serif;
+  --ftitle:'Gowun Batang','Noto Serif KR',serif;
+  --fsans:'Noto Sans KR',sans-serif;
+  --flatin:'Cormorant Garamond',serif;
+}
+html[lang="en"]{--fserif:'Noto Serif',Georgia,serif;--ftitle:'Cinzel','Cormorant Garamond',serif;--fsans:'Noto Sans',sans-serif}
+html[lang="ja"]{--fserif:'Noto Serif JP',serif;--ftitle:'Shippori Mincho B1','Noto Serif JP',serif;--fsans:'Noto Sans JP',sans-serif}
+html[lang="ja"] body{word-break:auto-phrase}   /* 일본어: 문절 단위 자연 줄바꿈 (Chromium) */
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--body);
+  font-family:var(--fserif); line-height:1.8;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  word-break:keep-all;        /* 단어 중간이 아닌 단어 사이에서 줄바꿈 */
+  overflow-wrap:break-word;   /* 단어 하나가 너무 길 때만 보조 분리 */
+  text-wrap:pretty;           /* 마지막 줄 외톨이 단어 방지 */
+}
+body.locked{overflow:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+::selection{background:var(--rose-d);color:#fff}
+
+.ambient{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(60vw 60vh at 80% -5%, rgba(224,154,174,.10), transparent 60%),
+    radial-gradient(55vw 55vh at 10% 100%, rgba(216,184,126,.08), transparent 60%),
+    var(--bg);
+}
+.petals{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.petal{position:absolute;top:-6vh;font-size:14px;color:var(--rose);opacity:0;
+  animation:fall linear infinite;filter:drop-shadow(0 0 4px rgba(224,154,174,.4))}
+@keyframes fall{
+  0%{transform:translateY(-10vh) rotate(0);opacity:0}
+  10%{opacity:.55}
+  90%{opacity:.45}
+  100%{transform:translateY(110vh) rotate(320deg);opacity:0}
+}
+
+/* ===== intro w/ language select ===== */
+.intro{position:fixed;inset:0;z-index:200;background:radial-gradient(circle at 50% 35%,#1a1214,#0a0708 70%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;padding:6vh 1.2rem;overflow:auto;
+  transition:opacity 1s ease,visibility 1s ease}
+.intro.out{opacity:0;visibility:hidden;pointer-events:none}
+.intro-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+.intro-bg img{width:100%;height:100%;object-fit:cover;object-position:center 28%;
+  opacity:.5;filter:blur(1px) brightness(.8) saturate(1.05)}
+.intro-bg::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse at center 45%,transparent 28%,rgba(10,7,8,.55) 62%,rgba(10,7,8,.92) 90%,var(--bg) 100%)}
+.intro-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:1.4rem;padding:0 1.2rem}
+.intro-eyebrow{font-family:var(--flatin);letter-spacing:6px;text-transform:uppercase;
+  color:var(--gold);font-size:clamp(.7rem,2.2vw,.86rem)}
+.intro-title{font-family:var(--ftitle);font-weight:700;color:#fff;text-align:center;line-height:1.35;
+  font-size:clamp(1.9rem,6.5vw,3.7rem);text-shadow:0 4px 40px rgba(0,0,0,.85),0 0 50px var(--rose-glow);text-wrap:balance}
+.intro-title b{color:var(--rose-soft)}
+.intro-sub{font-family:var(--flatin);color:var(--gold-soft);text-align:center;
+  font-size:clamp(.82rem,2.4vw,1.06rem);letter-spacing:1.5px;line-height:1.6;max-width:90vw}
+.intro-sub .bar{color:var(--dim);margin:0 .7rem}
+.lang-pick{display:flex;align-items:center;justify-content:center;gap:.7rem;flex-wrap:wrap;margin-top:.5rem}
+.lang-pick button{font-family:'Noto Sans KR','Noto Sans JP','Noto Sans',sans-serif;font-size:.92rem;
+  letter-spacing:1.5px;color:var(--gold-soft);background:rgba(20,15,16,.4);border:1px solid var(--bdr2);
+  border-radius:3px;padding:.7rem 1.7rem;cursor:pointer;transition:transform .2s,border-color .2s,background .2s,color .2s}
+.lang-pick button:hover,.lang-pick button:focus-visible{transform:translateY(-2px);border-color:var(--gold-d);
+  background:rgba(216,184,126,.12);color:#fff;outline:none}
+.lang-pick .bar{color:var(--dim);font-size:.9rem}
+
+/* ===== site / header ===== */
+.site{position:relative;z-index:5;opacity:0;transition:opacity 1s ease .2s}
+.site.show{opacity:1}
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);
+  background:linear-gradient(180deg,rgba(14,10,11,.92),rgba(14,10,11,.55));
+  border-bottom:1px solid var(--bdr);}
+.nav{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;
+  padding:.85rem 1.3rem;gap:1rem}
+.brand{font-family:var(--ftitle);font-weight:700;color:var(--gold-soft);font-size:clamp(.86rem,2.1vw,1.05rem);
+  letter-spacing:.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.menu{display:flex;gap:.3rem;flex-wrap:wrap;justify-content:flex-end;align-items:center}
+.menu a{font-family:var(--fsans);font-size:.84rem;letter-spacing:.5px;color:var(--muted);
+  padding:.45rem .55rem;transition:color .2s,text-shadow .2s;cursor:pointer}
+.menu a:hover,.menu a:focus-visible{color:var(--gold-soft);outline:none}
+.menu a.play{color:var(--rose-soft);font-weight:700;letter-spacing:1px;text-shadow:0 0 16px var(--rose-glow)}
+.menu a.play:hover,.menu a.play:focus-visible{color:#fff;text-shadow:0 0 24px var(--rose-glow)}
+.langsw{display:flex;gap:.1rem;align-items:center;margin-left:.4rem;padding-left:.6rem;border-left:1px solid var(--bdr)}
+.langsw button{font-family:'Noto Sans KR','Noto Sans JP','Noto Sans',sans-serif;font-size:.74rem;letter-spacing:.5px;
+  color:var(--dim);padding:.35rem .4rem;background:none;border:none;cursor:pointer;transition:color .2s}
+.langsw button:hover,.langsw button:focus-visible{color:var(--gold-soft);outline:none}
+.langsw button.active{color:var(--gold-soft);font-weight:700}
+
+section{max-width:1180px;margin:0 auto;padding:clamp(3.5rem,9vw,6.5rem) 1.3rem}
+.eyebrow{font-family:var(--flatin);letter-spacing:5px;text-transform:uppercase;
+  color:var(--gold);font-size:.8rem;display:flex;align-items:center;gap:.7rem;margin-bottom:1rem}
+.eyebrow::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+.eyebrow .enum{color:var(--rose-soft);font-weight:600;letter-spacing:2px}
+.eyebrow .enum::after{content:"/";color:var(--dim);margin:0 .15rem 0 .5rem;font-weight:400}
+.h2{font-family:var(--ftitle);font-weight:700;color:#f1e6e2;font-size:clamp(1.45rem,4.2vw,2.25rem);
+  line-height:1.4;margin-bottom:1.6rem;text-wrap:balance}
+.h2 small{display:block;font-family:var(--flatin);font-weight:400;color:var(--muted);
+  font-size:.5em;letter-spacing:3px;text-transform:uppercase;margin-top:.5rem}
+
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;max-width:none;padding:0;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.5) saturate(1.05)}
+.hero-bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(10,7,8,.92) 0%,rgba(10,7,8,.6) 45%,rgba(10,7,8,.25) 100%),
+            linear-gradient(0deg,var(--bg) 2%,transparent 30%)}
+.hero-inner{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:0 1.3rem;width:100%}
+.hero-genre{font-family:var(--flatin);letter-spacing:6px;text-transform:uppercase;color:var(--gold);
+  font-size:clamp(.74rem,2.4vw,.9rem);margin-bottom:1.1rem}
+.hero h1{font-family:var(--ftitle);font-weight:700;color:#fff;
+  font-size:clamp(1.7rem,5.4vw,3.2rem);line-height:1.38;max-width:22ch;
+  text-shadow:0 4px 36px rgba(0,0,0,.7)}
+.hero h1 b{color:var(--rose-soft);display:inline-block}
+.hero-copy{margin-top:1.4rem}
+.hero-copy .q{display:block;color:var(--gold-soft);font-size:clamp(1rem,2.8vw,1.28rem);
+  font-family:var(--ftitle);letter-spacing:.3px;font-style:italic}
+.hero-copy .b{display:block;color:var(--body);font-family:var(--fserif);
+  font-size:clamp(.9rem,2.4vw,1.02rem);margin-top:.7rem;max-width:52ch;line-height:1.9;font-style:normal}
+.scroll-cue{position:absolute;left:50%;bottom:2.2rem;transform:translateX(-50%);z-index:2;
+  color:var(--muted);font-family:var(--flatin);letter-spacing:3px;font-size:.74rem;text-align:center;
+  animation:bob 2s ease-in-out infinite}
+.scroll-cue::after{content:"";display:block;width:1px;height:34px;margin:.5rem auto 0;
+  background:linear-gradient(var(--gold),transparent)}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+
+.syn-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:2.4rem;align-items:start}
+.syn-lead{font-size:clamp(1.02rem,2.6vw,1.25rem);color:var(--gold-soft);font-family:var(--ftitle);
+  line-height:1.7;margin-bottom:1.4rem}
+.syn-body p{color:var(--body);margin-bottom:1rem}
+.syn-body p.punch{color:var(--rose-soft);font-family:var(--ftitle);font-size:1.1rem;line-height:1.6}
+.syn-points{list-style:none;display:flex;flex-direction:column;gap:.9rem;
+  background:var(--panel);border:1px solid var(--bdr);border-radius:16px;padding:1.6rem 1.5rem}
+.syn-points li{position:relative;padding-left:1.7rem;color:var(--body);font-size:.94rem;line-height:1.65}
+.syn-points li::before{content:"✦";position:absolute;left:0;top:.1rem;color:var(--rose)}
+.syn-points b{color:var(--gold-soft);font-weight:600}
+
+.char-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.3rem}
+.char-card{position:relative;display:block;text-align:left;cursor:pointer;
+  background:var(--bg2);border:1px solid var(--bdr);border-radius:16px;overflow:hidden;padding:0;
+  font-family:inherit;color:inherit;transition:transform .3s,border-color .3s,box-shadow .3s}
+.char-card:hover,.char-card:focus-visible{transform:translateY(-6px);border-color:var(--gold-d);
+  box-shadow:0 18px 40px rgba(0,0,0,.5),0 0 28px var(--glow);outline:none}
+.char-thumb{position:relative;aspect-ratio:3/4;overflow:hidden}
+.char-thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;
+  transition:transform .5s,filter .4s;filter:saturate(.96)}
+.char-card:hover .char-thumb img{transform:scale(1.06);filter:saturate(1.08) brightness(1.05)}
+.char-thumb::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(14,10,11,.96),transparent 55%)}
+.char-meta{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:1rem 1rem 1.1rem}
+.char-meta .role{font-family:var(--flatin);letter-spacing:3px;text-transform:uppercase;
+  font-size:.66rem;color:var(--gold);margin-bottom:.25rem}
+.char-meta .nm{font-family:var(--ftitle);font-weight:700;color:#fff;font-size:1.08rem;line-height:1.25}
+.char-meta .more{margin-top:.4rem;font-family:var(--fsans);font-size:.72rem;color:var(--rose-soft);
+  letter-spacing:1px;opacity:0;transform:translateY(4px);transition:opacity .3s,transform .3s}
+.char-card:hover .char-meta .more,.char-card:focus-visible .char-meta .more{opacity:1;transform:none}
+
+.world-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-bottom:2.6rem}
+.nation{background:var(--panel);border:1px solid var(--bdr);border-radius:16px;padding:1.7rem 1.5rem;
+  transition:transform .3s,border-color .3s}
+.nation:hover{transform:translateY(-4px);border-color:var(--gold-d)}
+.nation .tag{font-family:var(--flatin);letter-spacing:3px;text-transform:uppercase;font-size:.7rem;
+  color:var(--rose);margin-bottom:.6rem}
+.nation h3{font-family:var(--ftitle);font-weight:700;color:var(--gold-soft);font-size:1.18rem;margin-bottom:.7rem;line-height:1.3}
+.nation p{color:var(--muted);font-size:.92rem;line-height:1.7}
+.nation h3 .pin{color:var(--rose-soft);font-size:.72rem;font-family:var(--fsans);margin-left:.4rem;letter-spacing:0}
+.minor{display:flex;flex-wrap:wrap;gap:.7rem}
+.minor span{font-size:.82rem;color:var(--muted);background:var(--bg3);border:1px solid var(--bdr);
+  border-radius:3px;padding:.4rem .9rem}
+.minor span b{color:var(--gold-soft);font-weight:600}
+
+.system{background:linear-gradient(180deg,var(--bg2),var(--bg))}
+.ladder{display:grid;grid-template-columns:repeat(5,1fr);gap:.8rem;margin-top:.6rem}
+.rung{background:var(--panel);border:1px solid var(--bdr);border-radius:14px;padding:1.1rem 1rem;text-align:center;
+  position:relative;transition:transform .3s,border-color .3s}
+.rung:hover{transform:translateY(-4px);border-color:var(--rose-d)}
+.rung .lv{font-family:var(--flatin);letter-spacing:2px;color:var(--rose);font-size:.74rem;text-transform:uppercase}
+.rung .zone{font-family:var(--ftitle);color:var(--gold-soft);font-weight:700;margin:.4rem 0;font-size:.95rem}
+.rung .note{color:var(--muted);font-size:.8rem;line-height:1.5}
+.cmd{margin-top:2.4rem;display:flex;flex-wrap:wrap;gap:1rem}
+.cmd code{font-family:'Consolas',ui-monospace,monospace;background:var(--bg3);border:1px solid var(--bdr2);
+  border-radius:10px;padding:.7rem 1rem;color:var(--gold-soft);font-size:.88rem}
+.cmd code b{color:var(--rose-soft)}
+.cmd code span{color:var(--muted);font-family:var(--fsans);font-size:.8rem;margin-left:.5rem}
+
+.prologue{position:relative;overflow:hidden}
+.prologue-bg{position:absolute;inset:0;z-index:0}
+.prologue-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.32) saturate(1.1)}
+.prologue-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--bg),rgba(14,10,11,.7) 30%,rgba(14,10,11,.85))}
+.prologue-inner{position:relative;z-index:2}
+.scene{max-width:680px;margin:0 auto;background:rgba(12,8,9,.62);border:1px solid var(--bdr2);
+  border-radius:18px;padding:clamp(1.5rem,5vw,2.6rem);backdrop-filter:blur(3px)}
+.hud{font-family:'Consolas',ui-monospace,monospace;color:var(--gold-soft);font-size:.78rem;
+  letter-spacing:.3px;border-bottom:1px solid var(--bdr);padding-bottom:.9rem;margin-bottom:1.4rem}
+.scene p{color:var(--body);margin-bottom:.95rem;font-size:1rem;line-height:1.9}
+.scene .line{font-family:var(--ftitle);color:#fff}
+.scene .line b{color:var(--green);font-weight:700;margin-right:.5rem}
+.scene .em{color:var(--rose-soft);font-style:italic;font-family:var(--ftitle)}
+.statusbox{margin-top:1.6rem;font-family:'Consolas',ui-monospace,monospace;font-size:.78rem;line-height:2;
+  color:var(--muted);background:var(--bg3);border:1px solid var(--bdr);border-radius:12px;padding:1.1rem 1.2rem}
+.statusbox b{color:var(--gold-soft)}
+
+.cta{text-align:center}
+.cta .h2{margin-bottom:1rem}
+.cta p{color:var(--muted);max-width:52ch;margin:0 auto 2rem}
+.cta-btn{display:inline-block;font-family:var(--fsans);font-weight:600;letter-spacing:3px;
+  color:#1a1012;background:linear-gradient(135deg,var(--rose-soft),var(--rose-d));
+  border:none;border-radius:3px;padding:.8rem 2.6rem;font-size:.92rem;cursor:pointer;
+  box-shadow:0 8px 26px rgba(224,154,174,.28);transition:transform .25s,box-shadow .25s}
+.cta-btn:hover,.cta-btn:focus-visible{transform:translateY(-3px);box-shadow:0 14px 44px rgba(224,154,174,.5);outline:none}
+footer{text-align:center;color:var(--dim);font-size:.78rem;letter-spacing:.5px;
+  padding:2.6rem 1.3rem 3rem;border-top:1px solid var(--bdr)}
+footer b{color:var(--muted)}
+
+/* ===== BGM player ===== */
+.bgm{position:fixed;right:1rem;bottom:1rem;z-index:120;display:flex;align-items:center;gap:.55rem;
+  background:rgba(20,15,16,.55);border:1px solid var(--bdr2);border-radius:7px;padding:.42rem .7rem;
+  backdrop-filter:blur(8px);opacity:.65;transition:opacity .25s}
+.bgm:hover,.bgm:focus-within{opacity:1}
+.bgm-btn{width:24px;height:24px;display:flex;align-items:center;justify-content:center;background:none;
+  border:none;color:var(--rose-soft);font-size:.74rem;cursor:pointer;border-radius:4px;
+  text-shadow:0 0 10px var(--rose-glow);transition:color .2s}
+.bgm-btn:hover,.bgm-btn:focus-visible{color:#fff;outline:none}
+.bgm-vol{width:62px;height:3px;accent-color:var(--rose);cursor:pointer}
+@media(max-width:560px){ .bgm{right:.6rem;bottom:.6rem;padding:.38rem .55rem} .bgm-vol{width:48px} }
+
+.modal{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;
+  padding:1.2rem;background:rgba(6,4,5,.82);backdrop-filter:blur(6px)}
+.modal.open{display:flex;animation:mfade .3s ease}
+@keyframes mfade{from{opacity:0}to{opacity:1}}
+.modal-card{position:relative;width:min(640px,100%);max-height:90vh;overflow:auto;
+  background:var(--bg2);border:1px solid var(--bdr2);border-radius:18px;
+  box-shadow:0 30px 80px rgba(0,0,0,.7);animation:mup .35s ease}
+@keyframes mup{from{transform:translateY(20px);opacity:.4}to{transform:none;opacity:1}}
+.modal-banner{position:relative;aspect-ratio:3/2;overflow:hidden}
+.modal-banner img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.modal-banner::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--bg2),transparent 50%)}
+.modal-close{position:absolute;top:.7rem;right:.7rem;z-index:3;width:38px;height:38px;border-radius:50%;
+  background:rgba(10,7,8,.6);border:1px solid var(--bdr2);color:var(--body);font-size:1.2rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s}
+.modal-close:hover,.modal-close:focus-visible{background:var(--rose-d);color:#fff;transform:rotate(90deg);outline:none}
+.modal-body{padding:0 clamp(1.3rem,4vw,2rem) clamp(1.5rem,4vw,2rem)}
+.modal-role{font-family:var(--flatin);letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-size:.78rem}
+.modal-name{font-family:var(--ftitle);font-weight:700;color:#fff;font-size:1.6rem;margin:.2rem 0 1.1rem}
+.stat-row{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem 1.4rem;margin-bottom:1.4rem}
+.stat{display:flex;justify-content:space-between;gap:.6rem;border-bottom:1px dashed var(--bdr);padding-bottom:.5rem;font-size:.87rem}
+.stat .k{color:var(--muted)}
+.stat .v{color:var(--gold-soft);text-align:right}
+.modal-desc{color:var(--body);font-size:.96rem;line-height:1.9;margin-bottom:1.3rem}
+.modal-desc .quote{display:block;margin-top:1rem;padding-left:1rem;border-left:2px solid var(--rose-d);
+  color:var(--rose-soft);font-family:var(--ftitle);font-style:italic}
+.relline{font-family:var(--fsans);font-size:.82rem;color:var(--muted);background:var(--bg3);
+  border:1px solid var(--bdr);border-radius:10px;padding:.8rem 1rem;line-height:1.7}
+.relline .ic{font-size:.95rem;margin-right:.4rem}
+.relline b{color:var(--gold-soft)}
+.relline .now{color:var(--rose-soft);font-weight:700}
+
+@media(max-width:900px){
+  .syn-grid{grid-template-columns:1fr}
+  .char-grid{grid-template-columns:repeat(2,1fr)}
+  .world-grid{grid-template-columns:1fr}
+  .ladder{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+  .menu > a{display:none}                 /* hide all nav links incl. 시작하기 on mobile */
+  .nav{gap:.6rem}
+  .hero-genre{white-space:nowrap;letter-spacing:1.5px;font-size:clamp(.6rem,3vw,.78rem)}
+  .h2{font-size:clamp(1.2rem,5.2vw,1.7rem)}   /* 모바일 제목 축소 → 한 줄에 들어가 단어 중간 끊김 방지 */
+  footer .fdot{display:none}
+  footer .ftag{display:block;margin-top:.4rem}
+  .brand{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.3;font-size:.82rem;flex:1}
+  .langsw{margin-left:auto}
+  .char-grid{grid-template-columns:repeat(2,1fr);gap:.9rem}
+  .stat-row{grid-template-columns:1fr}
+  .ladder{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<div class="ambient"></div>
+<div class="petals" id="petals" aria-hidden="true"></div>
+
+<!-- ===== INTRO + LANGUAGE SELECT ===== -->
+<!-- ===== SITE ===== -->
+<div class="site show" id="site">
+<header>
+  <nav class="nav">
+    <span class="brand" data-i18n="navBrand"></span>
+    <div class="menu">
+      <a data-scroll="#synopsis" data-i18n="navSyn"></a>
+      <a data-scroll="#characters" data-i18n="navChar"></a>
+      <a data-scroll="#world" data-i18n="navWorld"></a>
+      <a data-scroll="#play" class="play" data-i18n="navPlay"></a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"><img src="assets/images/prologue.webp" alt="" width="1216" height="832"></div>
+  <div class="hero-inner">
+    <p class="hero-genre" data-i18n="heroGenre"></p>
+    <h1 data-i18n-html="heroH1"></h1>
+    <p class="hero-copy"><span class="q" data-i18n="heroQuote"></span><span class="b" data-i18n="heroBody"></span></p>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">SCROLL</div>
+</section>
+
+<!-- SYNOPSIS -->
+<section id="synopsis">
+  <p class="eyebrow"><span class="enum">01</span>Synopsis</p>
+  <h2 class="h2" data-i18n-html="synH2"></h2>
+  <div class="syn-grid">
+    <div class="syn-body">
+      <p class="syn-lead" data-i18n="synLead"></p>
+      <p data-i18n="synP1"></p>
+      <p data-i18n-html="synP2"></p>
+      <p class="punch" data-i18n="synPunch"></p>
+    </div>
+    <ul class="syn-points" id="synPoints"></ul>
+  </div>
+</section>
+
+<!-- CHARACTERS -->
+<section id="characters">
+  <p class="eyebrow"><span class="enum">02</span>Characters</p>
+  <h2 class="h2" data-i18n-html="charH2"></h2>
+  <div class="char-grid" id="charGrid"></div>
+</section>
+
+<!-- WORLD -->
+<section id="world">
+  <p class="eyebrow"><span class="enum">03</span>World</p>
+  <h2 class="h2" data-i18n-html="worldH2"></h2>
+  <div class="world-grid" id="worldGrid"></div>
+  <div class="minor" id="minor"></div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="play">
+  <p class="eyebrow" style="justify-content:center"><span class="enum">04</span>Play</p>
+  <h2 class="h2" data-i18n-html="ctaH2"></h2>
+  <p data-i18n="ctaP"></p>
+  <a class="cta-btn" id="playBtn" href="#" role="button" data-i18n="ctaBtn"></a>
+  <p style="color:var(--dim);font-size:.78rem;margin-top:1.1rem" data-i18n="ctaNote"></p>
+</section>
+
+<footer><p data-i18n-html="footer"></p></footer>
+</div><!-- /site -->
+
+<!-- ===== BGM player ===== -->
+<div class="bgm" id="bgm">
+  <audio id="bgmAudio" src="assets/bgm.mp3" loop preload="auto"></audio>
+  <button id="bgmToggle" class="bgm-btn" type="button" aria-label="배경음악 재생/정지" title="배경음악">▶</button>
+  <input id="bgmVol" class="bgm-vol" type="range" min="0" max="1" step="0.01" value="0.4" aria-label="음량 조절">
+</div>
+
+<!-- ===== MODAL ===== -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mName">
+  <div class="modal-card" role="document">
+    <div class="modal-banner"><img id="mBanner" src="" alt="" width="1100" height="733"></div>
+    <button class="modal-close" id="mClose">✕</button>
+    <div class="modal-body">
+      <p class="modal-role" id="mRole"></p>
+      <h3 class="modal-name" id="mName"></h3>
+      <div class="stat-row" id="mStats"></div>
+      <div class="modal-desc" id="mDesc"></div>
+      <div class="relline" id="mRel"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============ i18n dictionary ============ */
+const I18N = {
+ko:{
+  docTitle:"집순이인데, 피폐감금물에 빙의해 버렸다",
+  navBrand:"집순이인데, 피폐감금물에 빙의해 버렸다",
+  navSyn:"시놉시스", navChar:"등장인물", navWorld:"세계관", navSys:"감금 시스템", navPlay:"시작하기",
+  heroGenre:"책빙의 · 로맨스판타지 · 로맨틱코미디",
+  heroH1:"눈을 떠보니, 로판 소설 속<br><b>엑스트라 사생아.</b><br>게다가 착각 납치까지<br>당해 버렸다.",
+  heroQuote:"“그대는… 밖에 나갈 생각은 없는 건가?”",
+  heroBody:"문밖으론 한 발도 못 나가지만, 의식주는 알아서 제공되고, 실컷 게을러도 아무도 뭐라 안 한다. 최악일 줄 알았던 감금 생활이 생각보다 평화롭고, 안전하다.",
+  synH2:"빙의했더니 엑스트라 사생아?<br>게다가 착각 납치까지!",
+  synLead:"직장인의 꽃말은 퇴사라던데, 퇴사가 아니라 과로사해 버리고 말았다.",
+  synP1:"정신을 차려 보니 전날 밤 읽던 책 속 세상. 이게 바로 책빙의라는 건가. 기뻐한 것도 잠시, 빙의한 인물은 노예만도 못한 작은 왕국의 사생아, 말단 엑스트라였다.",
+  synP2:"그리고 어쩌다 보니 <b style=\"color:var(--gold-soft)\">여주인공 대신</b> 전쟁귀로 소문난 북부 대공에게 잘못 납치당하는, 어처구니없는 상황에 처하고 만다.",
+  synPunch:"그런데… 최악일 줄 알았던 이 감금 생활, 의외로 개꿀이잖아?",
+  synPoints:[
+    "<b>책빙의</b> · 읽던 로판 소설 속 말단 엑스트라 사생아로 빙의",
+    "<b>착각 납치</b> · 여주 대신 북부 대공에게 잘못 끌려온 처지",
+    "<b>초호화 감금</b> · 의식주 제공 + 무한 휴식 보장의 저택 라이프",
+    "<b>관계 분기</b> · 탈출 / 적응 / 협력, 선택에 따라 갈리는 운명"
+  ],
+  charH2:"등장인물<small>Click a card</small>",
+  charMore:"상세 보기 ›",
+  worldH2:"세 나라가 맞물린 대륙<small>Three Powers</small>",
+  nations:[
+    {tag:"Grand Duchy",h3:"블레일 대공령",pin:"감금 장소",p:"대륙 최고의 가치, 마정석 광산을 보유한 강력하고 독립적인 영지. 외부 세력에 의존하지 않는 자립체를 지향하며, 북부 대공 카이안이 통치한다."},
+    {tag:"Kingdom",h3:"솔트 왕국",pin:"당신의 고향",p:"제국과 대공령 사이를 잇는 중개무역의 허브이자 조선업의 나라. 빙의한 사생아 ‘나’의 고향이며, 배다른 자매 르메이아 왕녀가 있는 곳."},
+    {tag:"Empire",h3:"클레탄 제국",pin:"대륙 최대의 강대국",p:"대륙 최대의 국가. 호시탐탐 블레일의 마정석 이권을 노린다. 황태자 라이든이 야심을 품고 움직이는, 가장 큰 외부 위협."}
+  ],
+  minor:[
+    "<b>마탑</b> · 외교 중립, 마정석 가공·연구. 내부 균열 위기",
+    "<b>일라메나</b> · 사막화가 진행된 용병 파견국",
+    "<b>앙카르</b> · 마정석 광산 인근, 블레일 북부 정착지"
+  ],
+  sysH2:"감금에서 자유로, 이동 범위 시스템<small>Movement Range</small>",
+  sysIntro:"카이안과의 관계가 깊어질수록 허락되는 공간이 넓어진다. 단, 탈출 실패나 외부 위협이 닥치면 범위는 다시 좁아진다.",
+  rungs:[
+    {lv:"Lv.1",zone:"방 + 다이닝",note:"식사 시간에만 출입"},
+    {lv:"Lv.2",zone:"+ 정원",note:"자유 출입 · 약초 채집"},
+    {lv:"Lv.3",zone:"저택 전체",note:"정보 · 관리 보조"},
+    {lv:"Lv.4",zone:"+ 마을",note:"시장 · 의뢰 · 중개"},
+    {lv:"Lv.5",zone:"대공령",note:"마정석 접촉 가능"}
+  ],
+  cmds:[
+    {name:"!요약",desc:"대화 내용을 기반으로 서사를 요약"},
+    {name:"!디버그",desc:"오류 시 AI가 응답을 검토·재출력"}
+  ],
+  proH2:"스토리 미리보기<small>#0 · 자발적 감금</small>",
+  proHud:"제국력 235/7/3 │ 15:00 │ ☀️ │ 블레일 대공저 다이닝 룸",
+  proP1:"문밖으로는 절대 내보내 주지 않고, 필요한 건 알아서 제공이 되는 데다, 실컷 게으름을 피워도 아무도 뭐라고 하지 않는다.",
+  proP2:"그렇게 납치범(?)과의 식사 시간. 쥐죽은 듯한 침묵 끝에, 돌연 날 납치한 남자가 입을 열었다.",
+  proLine1:"<b>카이안 |</b> “그대는…”",
+  proLine2:"<b>카이안 |</b> “밖에 나갈 생각은 없는 건가?”",
+  proEm:"…글쎄, 이렇게 편한데 굳이?",
+  proStatus:"💰 0T │ 📦 -<br>🏠 이동 범위: <b>방 + 다이닝 룸(식사 시간만)</b><br>❤️ 카이안: 경계 │ 🔍 리암: 감시<br>🗡️ 라이든: 미접촉 │ 🌸 르메이아: 미접촉<br>⚠️ 신변: <b>안전(감금 중)</b>",
+  ctaH2:"당신의 감금 라이프를 시작하세요<small>Begin your story</small>",
+  ctaP:"탈출할 것인가, 적응할 것인가, 협력할 것인가. 선택은 당신의 몫. 태평한 집순이의 책빙의 로맨스가 지금 시작됩니다.",
+  ctaBtn:"이야기 시작하기",
+  ctaNote:"Velvetalk에서 플레이됩니다",
+  footer:"<b>집순이인데, 피폐감금물에 빙의해 버렸다</b>",
+  closeLabel:"닫기", relLabel:"관계 단계 · ", playAlert:"플레이 링크는 곧 공개됩니다!",
+  chars:{
+    kaian:{role:"Grand Duke of Bleil · 납치범",name:"카이안 블레일",card:"assets/images/kaian.webp",banner:"assets/images/kaian_banner.webp",
+      stats:[["신분","북부 대공"],["머리 · 눈","흑발 · 짙은 녹안"],["성향","8w7 SX/SP"],["키워드","통제 · 책임 · 건조한 위트"]],
+      desc:"르메이아 왕녀를 확보하려다 엉뚱한 사생아를 잘못 납치해 버린 전쟁귀. 처치 곤란인 포로가 도무지 무서워하질 않으니, 완벽했던 통제는 자꾸만 무력화되고, 당혹스러움 사이로 예상 밖의 관심이 비집고 든다. 감정이 차오를수록 말은 줄고 행동이 앞서는, 좀처럼 속을 안 내주는 남자.<span class=\"quote\">감정이 격해질 때만, 격식이 풀리고 반말이 새어 나온다.</span>",
+      rel:{ic:"❤️",label:"카이안",stages:["경계","관심","동요","신뢰","헌신"],now:0}},
+    liam:{role:"Strategist of Bleil",name:"리암 그레이",card:"assets/images/liam.webp",banner:"assets/images/liam_banner.webp",
+      stats:[["신분","대공의 참모"],["머리 · 눈","회색 머리 · 외알 안경"],["성향","6w5 SP/SO"],["키워드","분석 · 충성 · 딜레마"]],
+      desc:"카이안의 명령으로 ‘나’를 감시하는 냉철한 참모. 데이터로 판단하고 조건과 결론으로 말한다. 합리적으로 따지면 포로는 제거하는 편이 깔끔하지만, 주군이 그걸 원치 않을지도 모른다는 변수 앞에서, 충성과 효율 사이를 저울질한다. 건조한 얼굴로 능글맞은 농담을 던지는 타입.<span class=\"quote\">비정상적으로 태평한 포로 하나가, 그의 완벽한 분석을 자꾸 어긋나게 만든다.</span>",
+      rel:{ic:"🔍",label:"리암",stages:["감시","관찰","수용","신뢰","루트 분기"],now:0}},
+    raiden:{role:"Crown Prince of Cletan",name:"라이든 클레탄",card:"assets/images/raiden.webp",banner:"assets/images/raiden_banner.webp",
+      stats:[["신분","클레탄 황태자"],["머리 · 눈","금발 · 금빛 눈"],["성향","3w4 SO/SP"],["키워드","야심 · 매력 · 공허"]],
+      desc:"대륙 최대 제국의 황태자. 매혹적인 외면 아래 공허한 내면을 감추고, 모든 것을 정치적 카드로 환산한다. 카이안이 무언가를 숨기고 있다는 사실을 눈치챈 순간, ‘나’는 대공의 약점을 쥘 증거이자, 그의 손에 들어갈 위험한 패가 된다.<span class=\"quote\">미접촉에서 시작해, 주시하고, 다가오고… 견제할 것인가 회유할 것인가.</span>",
+      rel:{ic:"🗡️",label:"라이든",stages:["미접촉","주시","접근","견제 / 회유","루트 분기"],now:0}},
+    lemeia:{role:"Princess of Salt · 배다른 자매",name:"르메이아 솔트",card:"assets/images/lemeia.webp",banner:"assets/images/lemeia_banner.webp",
+      stats:[["신분","솔트 왕국 왕녀"],["머리 · 눈","갈색 머리 · 벽안"],["성향","2w1 SO/SP"],["키워드","죄책감 · 호기심 · 성장"]],
+      desc:"원래 납치당했어야 할 진짜 표적이자, ‘나’의 배다른 자매. 자기 대신 끌려간 사람이 있다는 사실에 죄책감과 호기심을 동시에 느낀다. 같은 왕국에서 태어났지만 적출 왕녀와 사생아라는 전혀 다른 운명, 그 거리만큼, 관계는 동맹도 갈등도 될 수 있다.<span class=\"quote\">수동적인 공주로 머물지, 스스로 길을 낼지. 그녀의 성장 곡선이 이야기를 바꾼다.</span>",
+      rel:{ic:"🌸",label:"르메이아",stages:["미접촉","호기심","유대","동맹 / 갈등","루트 분기"],now:0}}
+  }
+},
+en:{
+  docTitle:"A Homebody Thrown into a Dark Captivity Novel",
+  navBrand:"A Homebody Thrown into a Dark Captivity Novel",
+  navSyn:"Synopsis", navChar:"Characters", navWorld:"World", navSys:"System", navPlay:"Play",
+  heroGenre:"Isekai · Romance Fantasy · Romantic Comedy",
+  heroH1:"I woke up as an<br><b>illegitimate extra</b><br>inside a romance novel and got kidnapped by mistake.",
+  heroQuote:"“You there… have you no intention of stepping outside?”",
+  heroBody:"I'm not allowed a single step past the door, yet everything I need just appears, and no one says a word no matter how lazy I get. The captivity I dreaded turns out to be surprisingly peaceful. And safe.",
+  synH2:"Possessed as an illegitimate extra?<br>And on top of that kidnapped by mistake?",
+  synLead:"They say an office worker's dream is to quit, but I didn't quit. I worked myself to death.",
+  synP1:"When I came to my senses, I was inside the very novel I'd been reading the night before. So this is what \"possessing a book character\" feels like, except my joy was short-lived. The body I woke up in belonged to a lowly bastard of a small kingdom, a bit-part extra worth less than a slave.",
+  synP2:"And somehow, I ended up <b style=\"color:var(--gold-soft)\">kidnapped in the heroine's place</b> by the northern Grand Duke rumored to be a war-fiend. An absurd situation, to say the least.",
+  synPunch:"And yet… this captivity I was sure would be the worst? Turns out it's the easy life.",
+  synPoints:[
+    "<b>Book Possession</b> · Reborn as a bit-part bastard extra in the novel I was reading",
+    "<b>Mistaken Kidnapping</b> · Dragged off by the northern Duke in the heroine's place",
+    "<b>Luxury Captivity</b> · Food, shelter, and unlimited rest, all provided",
+    "<b>Branching Bonds</b> · Escape, adapt, or cooperate, your choices shape your fate"
+  ],
+  charH2:"Cast<small>Click a card</small>",
+  charMore:"View details ›",
+  worldH2:"A Continent of Three Powers<small>Three Powers</small>",
+  nations:[
+    {tag:"Grand Duchy",h3:"Grand Duchy of Bleil",pin:"Your prison",p:"An independent, formidable domain holding the continent's most prized resource: the manastone mines. It strives to remain a self-sufficient power free of outside influence, ruled by the northern Grand Duke Kaian."},
+    {tag:"Kingdom",h3:"Kingdom of Salt",pin:"Your homeland",p:"A hub of brokered trade and shipbuilding bridging the Empire and the Duchy. The homeland of the bastard \"you\" were reborn as, and home to your half-sister, Princess Lemeia."},
+    {tag:"Empire",h3:"Cletan Empire",pin:"Greatest power",p:"The continent's largest nation, ever eyeing Bleil's manastone interests. Its ambitious Crown Prince Raiden moves in the shadows, the greatest external threat of all."}
+  ],
+  minor:[
+    "<b>The Mage Tower</b> · Diplomatically neutral; refines and researches manastone. Cracking from within",
+    "<b>Ilamena</b> · A desertifying nation that hires out mercenaries",
+    "<b>Ankar</b> · A northern Bleil settlement near the manastone mines"
+  ],
+  sysH2:"From Captivity to Freedom, the Movement Range<small>Movement Range</small>",
+  sysIntro:"The deeper your bond with Kaian grows, the more of the manor opens to you. But a failed escape or an outside threat can shrink your range right back down.",
+  rungs:[
+    {lv:"Lv.1",zone:"Room + Dining",note:"Dining hours only"},
+    {lv:"Lv.2",zone:"+ Garden",note:"Free access · foraging"},
+    {lv:"Lv.3",zone:"Whole Manor",note:"Info · estate tasks"},
+    {lv:"Lv.4",zone:"+ Town",note:"Market · jobs · trade"},
+    {lv:"Lv.5",zone:"The Duchy",note:"Manastone access"}
+  ],
+  cmds:[
+    {name:"!summary",desc:"Summarizes the story so far from the conversation"},
+    {name:"!debug",desc:"On error, the AI reviews and regenerates its reply"}
+  ],
+  proH2:"Story Preview<small>#0 · Voluntary Captivity</small>",
+  proHud:"Imperial Year 235/7/3 │ 15:00 │ ☀️ │ Bleil Manor, Dining Room",
+  proP1:"I'm never, ever let out past the door, yet whatever I need simply appears, and no matter how much I slack off, not a soul complains.",
+  proP2:"And so, dinner with my kidnapper(?). After a dead silence, the man who'd abducted me suddenly spoke.",
+  proLine1:"<b>Kaian |</b> “You there…”",
+  proLine2:"<b>Kaian |</b> “Have you no intention of stepping outside?”",
+  proEm:"…Well, why would I, when it's this comfortable?",
+  proStatus:"💰 0T │ 📦 -<br>🏠 Range: <b>Room + Dining Hall (dining hours only)</b><br>❤️ Kaian: Wary │ 🔍 Liam: Watching<br>🗡️ Raiden: No contact │ 🌸 Lemeia: No contact<br>⚠️ Safety: <b>Secure (in captivity)</b>",
+  ctaH2:"Begin Your Captivity Life<small>Begin your story</small>",
+  ctaP:"Will you escape, adapt, or cooperate? The choice is yours. The book-possession romance of one carefree homebody begins now.",
+  ctaBtn:"Start the Story",
+  ctaNote:"",
+  footer:"<b>A Homebody Thrown into a Dark Captivity Novel</b>",
+  closeLabel:"Close", relLabel:"Relationship · ", playAlert:"The play link is coming soon!",
+  chars:{
+    kaian:{role:"Grand Duke of Bleil · Captor",name:"Kaian Bleil",card:"assets/images/kaian.webp",banner:"assets/images/kaian_banner.webp",
+      stats:[["Title","Northern Grand Duke"],["Hair · Eyes","Black · deep green"],["Type","8w7 SX/SP"],["Keywords","Control · duty · dry wit"]],
+      desc:"A war-fiend who botched a kidnapping, meaning to seize Princess Lemeia only to haul off the wrong bastard instead. The trouble is, his inconvenient captive isn't the least bit afraid of him, and his flawless control keeps coming undone. Through the bewilderment, an unexpected interest slips in. The more he feels, the less he speaks and the more he acts. A man who never quite lets you read him.<span class=\"quote\">Only when his composure cracks does the formality fall away and the blunt, informal voice slip out.</span>",
+      rel:{ic:"❤️",label:"Kaian",stages:["Wary","Curious","Shaken","Trust","Devotion"],now:0}},
+    liam:{role:"Strategist of Bleil",name:"Liam Grey",card:"assets/images/liam.webp",banner:"assets/images/liam_banner.webp",
+      stats:[["Title","The Duke's strategist"],["Hair · Eyes","Grey hair · monocle"],["Type","6w5 SP/SO"],["Keywords","Analysis · loyalty · dilemma"]],
+      desc:"The cool-headed strategist tasked with watching \"me\" on Kaian's orders. He judges by data and speaks in conditions and conclusions. By any rational measure, disposing of the captive would be the clean solution, but his lord may not want that, and so he weighs loyalty against efficiency. The type to drop a sly joke with a perfectly straight face.<span class=\"quote\">One abnormally carefree captive keeps throwing his flawless analysis off course.</span>",
+      rel:{ic:"🔍",label:"Liam",stages:["Watching","Observing","Accepting","Trust","Route split"],now:0}},
+    raiden:{role:"Crown Prince of Cletan",name:"Raiden Cletan",card:"assets/images/raiden.webp",banner:"assets/images/raiden_banner.webp",
+      stats:[["Title","Crown Prince of Cletan"],["Hair · Eyes","Golden · gold eyes"],["Type","3w4 SO/SP"],["Keywords","Ambition · charm · emptiness"]],
+      desc:"The Crown Prince of the continent's largest empire. Beneath a beguiling exterior he hides a hollow core, converting everything into a political card. The moment he senses Kaian is hiding something, \"you\" become both the evidence to grip the Duke's weakness and a dangerous piece that could fall into his hand.<span class=\"quote\">From no contact, he watches, he draws near… to check, or to win over.</span>",
+      rel:{ic:"🗡️",label:"Raiden",stages:["No contact","Watching","Approach","Check / woo","Route split"],now:0}},
+    lemeia:{role:"Princess of Salt · Half-sister",name:"Lemeia Salt",card:"assets/images/lemeia.webp",banner:"assets/images/lemeia_banner.webp",
+      stats:[["Title","Princess of Salt"],["Hair · Eyes","Brown · blue eyes"],["Type","2w1 SO/SP"],["Keywords","Guilt · curiosity · growth"]],
+      desc:"The intended target of the kidnapping, and \"your\" half-sister. She feels both guilt and curiosity toward the one taken in her place. Born in the same kingdom, yet bound to utterly different fates: legitimate princess and bastard. That very distance means your bond could become an alliance, or a rift.<span class=\"quote\">Will she stay the passive princess, or carve her own path? Her arc reshapes the story.</span>",
+      rel:{ic:"🌸",label:"Lemeia",stages:["No contact","Curiosity","Rapport","Ally / rift","Route split"],now:0}}
+  }
+},
+ja:{
+  docTitle:"引きこもり令嬢、監禁室に住まう",
+  navBrand:"引きこもり令嬢、監禁室に住まう",
+  navSyn:"あらすじ", navChar:"登場人物", navWorld:"世界観", navSys:"監禁システム", navPlay:"はじめる",
+  heroGenre:"憑依転生 · 恋愛ファンタジー · ラブコメ",
+  heroH1:"目を覚ませば、恋愛小説の<br><b>モブの庶子</b>。<br>おまけに人違いで誘拐されてしまった。",
+  heroQuote:"「お前は…外に出るつもりはないのか？」",
+  heroBody:"扉の外へは一歩も出してもらえないけれど、必要なものは勝手に揃い、どれだけ怠けても誰も何も言わない。最悪だと思っていた監禁生活が、意外にも平和で、安全だった。",
+  synH2:"憑依したらモブの庶子？<br>しかも人違いで誘拐だなんて！",
+  synLead:"会社員の夢は退職だというけれど、私は退職どころか、過労死してしまった。",
+  synP1:"気がつけば、前の晩に読んでいた本の中の世界。これが「本への憑依」というやつか。喜んだのも束の間。憑依した相手は、小さな王国の奴隷にも劣る庶子、ほんの端役のモブだった。",
+  synP2:"そしてあろうことか、<b style=\"color:var(--gold-soft)\">ヒロインの身代わりに</b>、戦鬼と噂される北部大公に人違いで誘拐されるという、とんでもない事態に陥ってしまう。",
+  synPunch:"なのに。最悪だと思っていたこの監禁生活、意外と最高じゃない？",
+  synPoints:[
+    "<b>本への憑依</b> · 読んでいた恋愛小説の端役、庶子に転生",
+    "<b>人違い誘拐</b> · ヒロインの代わりに北部大公にさらわれる身",
+    "<b>豪華な監禁</b> · 衣食住の提供＋無限の休息つき",
+    "<b>分岐する関係</b> · 脱出／順応／協力、選択が運命を分ける"
+  ],
+  charH2:"登場人物<small>Click a card</small>",
+  charMore:"詳細を見る ›",
+  worldH2:"三つの大国が絡む大陸<small>Three Powers</small>",
+  nations:[
+    {tag:"Grand Duchy",h3:"ブレイル大公領",pin:"監禁の地",p:"大陸最高の価値を持つ魔晶石鉱山を擁する、強大で独立した領地。外部勢力に依存しない自立体であろうとし、北部大公カイアンが統治する。"},
+    {tag:"Kingdom",h3:"ソルト王国",pin:"あなたの故郷",p:"帝国と大公領を結ぶ中継貿易の要衝であり、造船業の国。憑依した庶子「私」の故郷であり、異母姉妹であるルメイア王女のいる場所。"},
+    {tag:"Empire",h3:"クレタン帝国",pin:"大陸最大の強国",p:"大陸最大の国家。ブレイルの魔晶石利権を虎視眈々と狙う。皇太子ライデンが野心を秘めて動く、最大の外敵。"}
+  ],
+  minor:[
+    "<b>魔塔</b> · 外交中立。魔晶石の加工と研究を担うが、内部に亀裂",
+    "<b>イラメナ</b> · 砂漠化の進む傭兵派遣国",
+    "<b>アンカル</b> · 魔晶石鉱山に近い、ブレイル北部の入植地"
+  ],
+  sysH2:"監禁から自由へ、行動範囲システム<small>Movement Range</small>",
+  sysIntro:"カイアンとの関係が深まるほど、許される空間が広がっていく。ただし脱出の失敗や外部の脅威があれば、範囲は再び狭まる。",
+  rungs:[
+    {lv:"Lv.1",zone:"部屋＋食堂",note:"食事時のみ"},
+    {lv:"Lv.2",zone:"＋庭園",note:"自由出入・採集"},
+    {lv:"Lv.3",zone:"屋敷全体",note:"情報・管理補佐"},
+    {lv:"Lv.4",zone:"＋町",note:"市場・依頼・仲介"},
+    {lv:"Lv.5",zone:"大公領",note:"魔晶石に接触"}
+  ],
+  cmds:[
+    {name:"!要約",desc:"会話内容をもとに物語を要約します"},
+    {name:"!デバッグ",desc:"エラー時、AIが応答を自己点検し再出力"}
+  ],
+  proH2:"ストーリープレビュー<small>#0 · 自発的監禁</small>",
+  proHud:"帝国暦 235/7/3 │ 15:00 │ ☀️ │ ブレイル大公邸 ダイニングルーム",
+  proP1:"扉の外へは決して出してもらえない。なのに必要なものは勝手に揃い、いくら怠けても誰一人として文句を言わない。",
+  proP2:"そんな誘拐犯（？）との食事の時間。死んだような沈黙のあと、私をさらった男が不意に口を開いた。",
+  proLine1:"<b>カイアン |</b> 「お前は…」",
+  proLine2:"<b>カイアン |</b> 「外に出るつもりはないのか？」",
+  proEm:"…いや、こんなに快適なのに、わざわざ？",
+  proStatus:"💰 0T │ 📦 -<br>🏠 行動範囲: <b>部屋＋ダイニング（食事時のみ）</b><br>❤️ カイアン: 警戒 │ 🔍 リアム: 監視<br>🗡️ ライデン: 未接触 │ 🌸 ルメイア: 未接触<br>⚠️ 身辺: <b>安全（監禁中）</b>",
+  ctaH2:"あなたの監禁ライフを始めよう<small>Begin your story</small>",
+  ctaP:"脱出するか、順応するか、協力するか。選ぶのはあなた。のんきな引きこもりの憑依恋愛劇が、今はじまる。",
+  ctaBtn:"物語を始める",
+  ctaNote:"※ プレイリンクは後日公開予定",
+  footer:"<b>引きこもり令嬢、監禁室に住まう</b>",
+  closeLabel:"閉じる", relLabel:"関係 · ", playAlert:"プレイリンクは近日公開予定です！",
+  chars:{
+    kaian:{role:"Grand Duke of Bleil · 誘拐犯",name:"カイアン・ブレイル",card:"assets/images/kaian.webp",banner:"assets/images/kaian_banner.webp",
+      stats:[["身分","北部大公"],["髪 · 瞳","黒髪 · 深い緑の瞳"],["性向","8w7 SX/SP"],["キーワード","支配 · 責任 · 乾いた機知"]],
+      desc:"ルメイア王女を確保するつもりが、見当違いの庶子をさらってしまった戦鬼。厄介な捕虜はちっとも怖がらず、完璧だったはずの支配は次々と無力化されていく。戸惑いの隙間から、予想外の関心が忍び込む。感情が高ぶるほど口数は減り、行動が先に出る、なかなか本心を見せない男。<span class=\"quote\">感情が昂ったときだけ、格式が解けてくだけた口調がこぼれ出す。</span>",
+      rel:{ic:"❤️",label:"カイアン",stages:["警戒","関心","動揺","信頼","献身"],now:0}},
+    liam:{role:"Strategist of Bleil",name:"リアム・グレイ",card:"assets/images/liam.webp",banner:"assets/images/liam_banner.webp",
+      stats:[["身分","大公の参謀"],["髪 · 瞳","灰色の髪 · 片眼鏡"],["性向","6w5 SP/SO"],["キーワード","分析 · 忠誠 · ジレンマ"]],
+      desc:"カイアンの命で「私」を監視する冷徹な参謀。データで判断し、条件と結論で語る。合理的に考えれば捕虜は始末するのが綺麗だが、主君がそれを望まないかもしれない。忠誠と効率を天秤にかける。涼しい顔で食えない冗談を放つタイプ。<span class=\"quote\">異常なほどのんきな捕虜が、彼の完璧な分析を狂わせ続ける。</span>",
+      rel:{ic:"🔍",label:"リアム",stages:["監視","観察","受容","信頼","ルート分岐"],now:0}},
+    raiden:{role:"Crown Prince of Cletan",name:"ライデン・クレタン",card:"assets/images/raiden.webp",banner:"assets/images/raiden_banner.webp",
+      stats:[["身分","クレタン皇太子"],["髪 · 瞳","金髪 · 金の瞳"],["性向","3w4 SO/SP"],["キーワード","野心 · 魅力 · 虚無"]],
+      desc:"大陸最大の帝国の皇太子。蠱惑的な外面の下に虚ろな内面を隠し、すべてを政治のカードに換算する。カイアンが何かを隠していると察した瞬間、「あなた」は大公の弱みを握る証拠であり、彼の手に渡れば危険な切り札となる。<span class=\"quote\">未接触から、見定め、近づき…牽制するか、それとも懐柔するか。</span>",
+      rel:{ic:"🗡️",label:"ライデン",stages:["未接触","注視","接近","牽制／懐柔","ルート分岐"],now:0}},
+    lemeia:{role:"Princess of Salt · 異母姉妹",name:"ルメイア・ソルト",card:"assets/images/lemeia.webp",banner:"assets/images/lemeia_banner.webp",
+      stats:[["身分","ソルト王国の王女"],["髪 · 瞳","茶髪 · 碧眼"],["性向","2w1 SO/SP"],["キーワード","罪悪感 · 好奇心 · 成長"]],
+      desc:"本来さらわれるはずだった本命の標的であり、「私」の異母姉妹。自分の代わりに連れ去られた人がいることに、罪悪感と好奇心を同時に抱く。同じ王国に生まれながら、嫡出の王女と庶子というまるで違う運命、その距離の分だけ、関係は同盟にも、亀裂にもなりうる。<span class=\"quote\">受け身の姫君にとどまるか、自ら道を切り拓くか。彼女の成長曲線が物語を変える。</span>",
+      rel:{ic:"🌸",label:"ルメイア",stages:["未接触","好奇心","絆","同盟／葛藤","ルート分岐"],now:0}}
+  }
+}
+};
+
+/* ============ render ============ */
+let LANG = 'en';
+let CHARS = I18N.en.chars;
+
+function render(lang){
+  const t = I18N[lang]; if(!t) return;
+  LANG = lang; CHARS = t.chars;
+  document.documentElement.lang = lang;
+  document.title = t.docTitle;
+
+  document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent = t[el.dataset.i18n] ?? ''; });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{ el.innerHTML = t[el.dataset.i18nHtml] ?? ''; });
+
+  // synopsis points
+  document.getElementById('synPoints').innerHTML = t.synPoints.map(p=>`<li>${p}</li>`).join('');
+
+  // characters
+  const grid = document.getElementById('charGrid');
+  grid.innerHTML = '';
+  Object.entries(t.chars).forEach(([id,c])=>{
+    const b = document.createElement('button');
+    b.className = 'char-card';
+    b.setAttribute('aria-label', c.name);
+    b.dataset.id = id;
+    b.innerHTML = `
+      <div class="char-thumb"><img src="${c.card}" alt="${c.name}" width="900" height="616" loading="lazy"></div>
+      <div class="char-meta">
+        <p class="role">${c.role.split('·')[0].trim()}</p>
+        <p class="nm">${c.name}</p>
+        <p class="more">${t.charMore}</p>
+      </div>`;
+    b.addEventListener('click', ()=>openModal(id));
+    grid.appendChild(b);
+  });
+
+  // world
+  document.getElementById('worldGrid').innerHTML = t.nations.map(n=>`
+    <div class="nation"><p class="tag">${n.tag}</p>
+      <h3>${n.h3}<span class="pin">${n.pin}</span></h3><p>${n.p}</p></div>`).join('');
+  document.getElementById('minor').innerHTML = t.minor.map(m=>`<span>${m}</span>`).join('');
+
+
+  // modal close aria
+  document.getElementById('mClose').setAttribute('aria-label', t.closeLabel);
+
+  // active lang button
+  document.querySelectorAll('#langSw button').forEach(btn=>{
+    btn.classList.toggle('active', btn.dataset.lang===lang);
+  });
+}
+
+/* ============ modal ============ */
+const modal = document.getElementById('modal');
+const mBanner=document.getElementById('mBanner'), mRole=document.getElementById('mRole'),
+      mName=document.getElementById('mName'), mStats=document.getElementById('mStats'),
+      mDesc=document.getElementById('mDesc'), mRel=document.getElementById('mRel'),
+      mClose=document.getElementById('mClose');
+let lastFocus=null;
+
+function openModal(id){
+  const c=CHARS[id]; if(!c) return;
+  lastFocus=document.activeElement;
+  mBanner.src=c.card; mBanner.alt=c.name;
+  mRole.textContent=c.role;
+  mName.textContent=c.name;
+  mStats.innerHTML=c.stats.map(([k,v])=>`<div class="stat"><span class="k">${k}</span><span class="v">${v}</span></div>`).join('');
+  mDesc.innerHTML=c.desc;
+  const r=c.rel;
+  mRel.innerHTML=`<span class="ic">${r.ic}</span><b>${r.label}</b> ${I18N[LANG].relLabel}`+
+    r.stages.map((s,i)=> i===r.now ? `<span class="now">${s}</span>` : s).join(' → ');
+  modal.classList.add('open');
+  document.body.classList.add('locked');
+  mClose.focus();
+}
+function closeModal(){
+  modal.classList.remove('open');
+  document.body.classList.remove('locked');
+  if(lastFocus) lastFocus.focus();
+}
+mClose.addEventListener('click', closeModal);
+modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape' && modal.classList.contains('open')) closeModal(); });
+modal.addEventListener('keydown', e=>{
+  if(e.key!=='Tab') return;
+  const els=[...modal.querySelectorAll('button, [href]')].filter(el=>el.offsetParent!==null);
+  if(!els.length) return;
+  const first=els[0], last=els[els.length-1];
+  if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+  else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+});
+
+/* ============ English only ============ */
+// 언어 선택 화면 없이 영어로 바로 시작. 브라우저가 자동재생을 막으면 첫 클릭/터치/키 입력 때 BGM 시작
+function firstGesture(){ startBgm(); window.removeEventListener('pointerdown',firstGesture); window.removeEventListener('keydown',firstGesture); }
+window.addEventListener('pointerdown',firstGesture);
+window.addEventListener('keydown',firstGesture);
+
+/* ============ play button ============ */
+document.getElementById('playBtn').addEventListener('click', e=>{
+  const PLAY_URLS = {
+    en:"https://imyn.ai/contents/89523c88-1500-4d82-9028-27e4e3833787"
+  };
+  const url = PLAY_URLS[LANG] || "";
+  if(url){ window.open(url,'_blank','noopener'); }
+  else { e.preventDefault(); alert(I18N[LANG].playAlert); }
+});
+
+/* ============ nav smooth scroll ============ */
+document.querySelectorAll('.menu a[data-scroll]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.dataset.scroll);
+    if(t) t.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+/* ============ petals ============ */
+const petalLayer=document.getElementById('petals');
+const N=window.matchMedia('(max-width:560px)').matches ? 8 : 16;
+for(let i=0;i<N;i++){
+  const p=document.createElement('span');
+  p.className='petal'; p.textContent='❀';
+  p.style.left=((i*100/N)+(i%3)*4)+'%';
+  p.style.fontSize=(10+(i%4)*4)+'px';
+  p.style.animationDuration=(10+(i%5)*3)+'s';
+  p.style.animationDelay=(-(i%7)*2)+'s';
+  petalLayer.appendChild(p);
+}
+
+/* ============ BGM player ============ */
+const bgmAudio=document.getElementById('bgmAudio');
+const bgmToggle=document.getElementById('bgmToggle');
+const bgmVol=document.getElementById('bgmVol');
+bgmAudio.volume=parseFloat(bgmVol.value);
+function bgmIcon(){ bgmToggle.textContent = bgmAudio.paused ? '▶' : '❚❚'; }
+function startBgm(){ bgmAudio.play().catch(()=>{}); }
+bgmToggle.addEventListener('click', ()=>{ if(bgmAudio.paused) startBgm(); else bgmAudio.pause(); });
+bgmAudio.addEventListener('play', bgmIcon);
+bgmAudio.addEventListener('pause', bgmIcon);
+bgmVol.addEventListener('input', ()=>{ bgmAudio.volume=parseFloat(bgmVol.value); });
+bgmIcon();
+
+/* initial render (content behind intro) */
+render('en');
+startBgm();
+</script>
+</body>
+</html>
